@@ -1897,7 +1897,7 @@ var Coin = function Coin() {
     src: "https://cryptoicon-api.vercel.app/api/icon/".concat(state === null || state === void 0 ? void 0 : state.symbol.toLocaleLowerCase()),
     alt: "coin-image",
     style: titleImageStyle
-  }), state.name));
+  }), state === null || state === void 0 ? void 0 : state.name));
 };
 
 _s(Coin, "BkNby41n6VIQjqZqNtidBmiE7rk=", false, function () {
@@ -49689,7 +49689,7 @@ function _setPrototypeOf(o, p) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("8d6bfcf444e0b44bae4e")
+/******/ 		__webpack_require__.h = () => ("9b32d046951bbcc7e930")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
