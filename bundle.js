@@ -1892,12 +1892,11 @@ var Coin = function Coin() {
       isLoading = _useQuery.isLoading,
       coin = _useQuery.data;
 
-  console.log("state >> ", state);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_components_common_Title__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: "https://cryptoicon-api.vercel.app/api/icon/".concat(state === null || state === void 0 ? void 0 : state.symbol.toLocaleLowerCase()),
+    src: "https://cryptoicon-api.vercel.app/api/icon/".concat(state.symbol.toLocaleLowerCase()),
     alt: "coin-image",
     style: titleImageStyle
-  }), state === null || state === void 0 ? void 0 : state.name));
+  }), state.name));
 };
 
 _s(Coin, "BkNby41n6VIQjqZqNtidBmiE7rk=", false, function () {
@@ -2156,7 +2155,9 @@ var GlobalStyle = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.createGlobal
 _c = GlobalStyle;
 
 var AppRoutes = function AppRoutes() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_layouts_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GlobalStyle, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_query_devtools__WEBPACK_IMPORTED_MODULE_1__.ReactQueryDevtools, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, {
+    basename: "https://1-blue.github.io/react-clone-project"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_layouts_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GlobalStyle, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_query_devtools__WEBPACK_IMPORTED_MODULE_1__.ReactQueryDevtools, {
     initialIsOpen: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     path: "/",
@@ -49689,7 +49690,7 @@ function _setPrototypeOf(o, p) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("9b32d046951bbcc7e930")
+/******/ 		__webpack_require__.h = () => ("172a40cfc030c9714963")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
