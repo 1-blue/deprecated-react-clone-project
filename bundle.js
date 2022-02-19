@@ -1892,8 +1892,9 @@ var Coin = function Coin() {
       isLoading = _useQuery.isLoading,
       coin = _useQuery.data;
 
+  console.log("state >> ", state);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_components_common_Title__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: "https://cryptoicon-api.vercel.app/api/icon/".concat(state.symbol.toLocaleLowerCase()),
+    src: "https://cryptoicon-api.vercel.app/api/icon/".concat(state === null || state === void 0 ? void 0 : state.symbol.toLocaleLowerCase()),
     alt: "coin-image",
     style: titleImageStyle
   }), state.name));
@@ -49688,7 +49689,7 @@ function _setPrototypeOf(o, p) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("dcc90b03b25bdd713f33")
+/******/ 		__webpack_require__.h = () => ("8d6bfcf444e0b44bae4e")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
