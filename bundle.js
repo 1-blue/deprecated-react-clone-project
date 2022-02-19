@@ -1989,7 +1989,7 @@ var Home = function Home() {
       isLoadingTickers = _useQuery2.isLoading,
       tickers = _useQuery2.data;
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_components_common_Title__WEBPACK_IMPORTED_MODULE_3__["default"], null, "\uD83E\uDE99Coin\uD83E\uDE99"), isLoadingCoins && isLoadingTickers ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_components_common_Spinner__WEBPACK_IMPORTED_MODULE_5__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, coins === null || coins === void 0 ? void 0 : coins.slice(0, 100).map(function (coin, index) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_components_common_Title__WEBPACK_IMPORTED_MODULE_3__["default"], null, "\uD83E\uDE99Coin\uD83E\uDE99"), isLoadingCoins || isLoadingTickers ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_components_common_Spinner__WEBPACK_IMPORTED_MODULE_5__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, coins === null || coins === void 0 ? void 0 : coins.slice(0, 100).map(function (coin, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_components_Coin__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: coin.id,
       id: coin.id,
@@ -2156,10 +2156,10 @@ _c = GlobalStyle;
 
 var AppRoutes = function AppRoutes() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, {
-    basename: "https://1-blue.github.io/react-clone-project"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_layouts_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GlobalStyle, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_query_devtools__WEBPACK_IMPORTED_MODULE_1__.ReactQueryDevtools, {
+    basename: "/"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_layouts_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(GlobalStyle, null),  true ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_query_devtools__WEBPACK_IMPORTED_MODULE_1__.ReactQueryDevtools, {
     initialIsOpen: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }) : 0, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_src_pages_Home__WEBPACK_IMPORTED_MODULE_3__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
@@ -49690,7 +49690,7 @@ function _setPrototypeOf(o, p) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("172a40cfc030c9714963")
+/******/ 		__webpack_require__.h = () => ("2d6d2a079242bbee8db0")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
