@@ -7,11 +7,10 @@ import "@src/css/animation.css";
 import "@src/css/common.css";
 
 // components
-import AppRoutes from "@src/routes/AppRoutes";
+import AppRoutes from "./src/routes/AppRoutes";
 
 // theme
-import { ThemeProvider } from "styled-components";
-import { theme } from "@src/utils/theme";
+import CustomThemeProvider from "./src/utils/CustomThemeProvider";
 
 // react-query
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -21,9 +20,9 @@ const queryClient = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
+      <CustomThemeProvider>
         <AppRoutes />
-      </ThemeProvider>
+      </CustomThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>,
   document.querySelector("#root"),

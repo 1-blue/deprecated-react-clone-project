@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --env development --open",
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --env production",
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --env production && cp dist/index.html dist/404.html",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

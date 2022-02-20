@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+// components
+import SideBar from "@src/components/SideBar";
+
 const Wrapper = styled.main`
   @media (min-width: 486px) {
     width: 486px;
@@ -13,7 +16,12 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  return <Wrapper>{children}</Wrapper>;
+  return (
+    <Wrapper>
+      {children}
+      <SideBar />
+    </Wrapper>
+  );
 };
 
 export default Layout;
