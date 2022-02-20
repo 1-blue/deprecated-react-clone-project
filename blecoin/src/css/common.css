@@ -1,0 +1,21 @@
+:root {
+  --background-color: #fafafa;
+  --icon-color: #262626;
+  --facebook-color: #3f62a9;
+  --naver-color: #00bd39;
+  --kakao-color: #eed700;
+
+  --light-blue: #0095f6;
+  --heart-color: #ed4956;
+}
+
+/* 일반 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap');
+/* 차트 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
+
+/* 임시 부여 */
+#root {
+  /* width: 100%;
+  height: 100%; */
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg
+	version="1.1"
+	id="layer"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	x="0px"
+	y="0px"
+	viewBox="0 0 40 40"
+	style="enable-background:new 0 0 40 40;"
+	xml:space="preserve"
+	width="current"
+	height="current"
+>
+	<g>
+		<path
+			d="M20,0L0,12v28h14V28c0-3.3,2.7-6,6-6s6,2.7,6,6v12h14V12L20,0z"
+			fill="current"
+		/>
+	</g>
+</svg>
