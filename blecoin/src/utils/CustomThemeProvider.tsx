@@ -1,21 +1,21 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
 
 // theme
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "@src/utils/theme";
-import { useQuery } from "react-query";
+
+// atom
+import { isDarkAtom } from "@src/atoms";
 
 interface ICustomThemeProvider {
   children: React.ReactNode;
 }
-interface ITheme {
-  theme: string;
-}
 
 const CustomThemeProvider = ({ children }: ICustomThemeProvider) => {
-  const { data } = useQuery<ITheme>("theme", () => ({ theme: "dark" }));
+  const isDark = useRecoilValue<boolean>(isDarkAtom);
 
-  return <ThemeProvider theme={data?.theme === "dark" ? darkTheme : lightTheme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={isDark ? darkTheme : lightTheme}>{children}</ThemeProvider>;
 };
 
 export default CustomThemeProvider;

@@ -19,7 +19,7 @@ export const Wrapper = styled(Link)<ICoinWrapper>`
   transition: all 0.4s;
 
   &:hover {
-    transform: translateY(-10px);
+    transform: scale(1.1, 1.1);
     background-color: ${({ theme }) => theme.accentColor};
     color: ${({ theme }) => theme.textColor};
   }

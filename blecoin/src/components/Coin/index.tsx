@@ -14,7 +14,7 @@ interface ICoin {
 const Coin = ({ id, symbol, name, price, market_cap_change_24h }: ICoin) => {
   return (
     <li>
-      <Wrapper to={`/${id}`} state={{ symbol, name }} $upperLimit={market_cap_change_24h > 0}>
+      <Wrapper to={`/${id}`} $upperLimit={market_cap_change_24h > 0}>
         <img
           src={`https://cryptoicon-api.vercel.app/api/icon/${symbol.toLocaleLowerCase()}`}
           alt="coin-image"

@@ -1,10 +1,16 @@
 import React from "react";
 import { useQuery } from "react-query";
 import ApexCharts from "react-apexcharts";
+import { useRecoilValue } from "recoil";
 
 // fetcher
 import { fetchOHLCV } from "@src/fetchers";
-import Spinner from "../common/Spinner";
+
+// commom-components
+import Spinner from "@src/components/common/Spinner";
+
+// atom
+import { isDarkAtom } from "@src/atoms";
 
 interface IChartProps {
   coinId: string;
@@ -21,6 +27,7 @@ interface IOHLCV {
 }
 
 const Chart = ({ coinId }: IChartProps) => {
+  const isDark = useRecoilValue<boolean>(isDarkAtom);
   const { isLoading, data } = useQuery<IOHLCV[]>([coinId, "ohlcv"], () => fetchOHLCV(coinId));
 
   if (isLoading) return <Spinner />;
@@ -44,6 +51,7 @@ const Chart = ({ coinId }: IChartProps) => {
             toolbar: {
               show: false,
             },
+            foreColor: "#FDEBF7",
           },
           theme: {
             mode: "dark",

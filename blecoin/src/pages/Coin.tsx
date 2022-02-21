@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 
@@ -15,12 +15,6 @@ import Chart from "@src/components/Chart";
 import { fetchCoin, fetchTicker } from "@src/fetchers";
 import { dateFormat } from "@src/utils";
 
-interface IRouterState {
-  state: {
-    symbol: string;
-    name: string;
-  };
-}
 interface ICoin {
   id: string;
   name: string;
@@ -81,30 +75,29 @@ const CoinOverviewList = styled.li`
 
 const Coin = () => {
   const { coinId } = useParams<{ coinId: string }>();
-  const { state } = useLocation() as IRouterState;
   const titleImageStyle = useMemo(() => ({ width: "40px", height: "40px", marginRight: "0.4em" }), []);
   const { isLoading: isLoadingCoin, data: coin } = useQuery<ICoin>([coinId, "coin"], () => fetchCoin(coinId as string));
   const { isLoading: isLoadingTicker, data: ticker } = useQuery<ITicker>([coinId, "ticker"], () =>
     fetchTicker(coinId as string),
   );
 
-  if (isLoadingCoin || isLoadingTicker || !state) return <Spinner />;
+  if (isLoadingCoin || isLoadingTicker) return <Spinner />;
 
   return (
     <>
       <HeadInfo
         title={`Blecoin | ${coin?.name.toLocaleLowerCase()}`}
         description={`코인 클론 사이트 | ${coin?.description}`}
-        image={`https://cryptoicon-api.vercel.app/api/icon/${state.symbol.toLocaleLowerCase()}`}
+        image={`https://cryptoicon-api.vercel.app/api/icon/${(coin as ICoin).symbol.toLocaleLowerCase()}`}
       />
 
       <Title>
         <img
-          src={`https://cryptoicon-api.vercel.app/api/icon/${state.symbol.toLocaleLowerCase()}`}
+          src={`https://cryptoicon-api.vercel.app/api/icon/${(coin as ICoin).symbol.toLocaleLowerCase()}`}
           alt="coin-image"
           style={titleImageStyle}
         />
-        <span>{state.name}</span>
+        <span>{(coin as ICoin).name}</span>
       </Title>
 
       <Chart coinId={coinId as string} />

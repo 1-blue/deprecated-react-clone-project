@@ -15,15 +15,20 @@ import CustomThemeProvider from "./src/utils/CustomThemeProvider";
 // react-query
 import { QueryClient, QueryClientProvider } from "react-query";
 
+// recoil
+import { RecoilRoot } from "recoil";
+
 const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <CustomThemeProvider>
-        <AppRoutes />
-      </CustomThemeProvider>
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <CustomThemeProvider>
+          <AppRoutes />
+        </CustomThemeProvider>
+      </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>,
   document.querySelector("#root"),
 );
