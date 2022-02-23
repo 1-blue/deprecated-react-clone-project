@@ -5,13 +5,15 @@
   1. [노마드 코더 강의](https://nomadcoders.co/react-masterclass)
   2. [boiler-plate](https://github.com/1-blue/boiler-plate-react-typescript)
 
-## 🚀 이미지
-+ 메인 페이지
-![main](https://user-images.githubusercontent.com/63289318/155076522-76a12484-79ac-4fca-8fbf-323a1f1b7418.jpg)
-+ 코인 페이지
-![coin](https://user-images.githubusercontent.com/63289318/155076646-92f8518e-9284-402d-a65c-6f8a3123cc36.jpg)
+## 🖼️ 이미지 🖼️
+> 실행화면: 메인 페이지와 코인 페이지
 
-## 🚀 가이드 라인
+<p style="height: 450px; margin: 0;">
+  <img src="https://user-images.githubusercontent.com/63289318/155279643-082c6cb5-f8ab-4179-b539-4fcc4d71af3e.jpg" width="40%" align="left" />
+  <img src="https://user-images.githubusercontent.com/63289318/155076646-92f8518e-9284-402d-a65c-6f8a3123cc36.jpg" width="40%" align="right" />
+</p>
+
+## 🔎 가이드 라인 🔍
 ```bash
 cd blecoin
 
