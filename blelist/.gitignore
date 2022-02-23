@@ -1,0 +1,13 @@
+# node_modules 제외
+*/node_modules
+node_modules
+
+# env
+*/.env*
+.env*
+
+# 번들링된 파일 제외
+*/dist
+
+# aws-pem
+*.pem
