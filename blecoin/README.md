@@ -8,10 +8,9 @@
 ## 🖼️ 이미지 🖼️
 > 실행화면: 메인 페이지와 코인 페이지
 
-<p style="height: 450px; margin: 0;">
-  <img src="https://user-images.githubusercontent.com/63289318/155279643-082c6cb5-f8ab-4179-b539-4fcc4d71af3e.jpg" width="40%" align="left" />
-  <img src="https://user-images.githubusercontent.com/63289318/155076646-92f8518e-9284-402d-a65c-6f8a3123cc36.jpg" width="40%" align="right" />
-</p>
+|메인 페이지|코인 상세 페이지|
+|:-:|:-:|
+|<img src="https://user-images.githubusercontent.com/63289318/155279643-082c6cb5-f8ab-4179-b539-4fcc4d71af3e.jpg" width="100%" />|<img src="https://user-images.githubusercontent.com/63289318/155076646-92f8518e-9284-402d-a65c-6f8a3123cc36.jpg" width="100%" />|
 
 ## 🔎 가이드 라인 🔍
 ```bash

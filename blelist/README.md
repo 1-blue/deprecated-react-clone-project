@@ -8,10 +8,9 @@
 ## 🖼️ 실행 이미지 🖼️
 > 실행화면: 메인 페이지 ( 🌙어두운 테마와 ☀️밝은 테마 )
 
-<p>
-  <img src="https://user-images.githubusercontent.com/63289318/155276767-c7a8ffa4-a030-423d-80fa-5129c58679f9.jpg" width="50%" align="left" />
-  <img src="https://user-images.githubusercontent.com/63289318/155278190-f599cdc7-911c-4c2a-9222-8919a295a4df.jpg" width="50%" align="right" />
-</p>
+|🌙 어두운 테마 🌙|☀️ 밝은 테마 ☀️|
+|:-:|:-:|
+|<img src="https://user-images.githubusercontent.com/63289318/155276767-c7a8ffa4-a030-423d-80fa-5129c58679f9.jpg" width="100%" />|<img src="https://user-images.githubusercontent.com/63289318/155278190-f599cdc7-911c-4c2a-9222-8919a295a4df.jpg" width="100%" />|
 
 ## 🔎 가이드 라인 🔍
 ```bash
