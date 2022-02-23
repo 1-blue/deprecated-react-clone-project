@@ -1,17 +1,19 @@
-# 👉 blecoin 👈
-`React` + `Typescript` + `react-query` + `recoil` + `styled-components`로 만드는 간단한 코인 정보 사이트
+# 👉 blelist 👈
+`React` + `Typescript` + `recoil` + `styled-components`로 만든 간단한 To-Do-List 사이트
 
 + 참고
   1. [노마드 코더 강의](https://nomadcoders.co/react-masterclass)
   2. [boiler-plate](https://github.com/1-blue/boiler-plate-react-typescript)
 
-## 🚀 이미지
-+ 메인 페이지
-![main](https://user-images.githubusercontent.com/63289318/155076522-76a12484-79ac-4fca-8fbf-323a1f1b7418.jpg)
-+ 코인 페이지
-![coin](https://user-images.githubusercontent.com/63289318/155076646-92f8518e-9284-402d-a65c-6f8a3123cc36.jpg)
+## 🖼️ 실행 이미지 🖼️
+> 실행화면: 메인 페이지 ( 🌙어두운 테마와 ☀️밝은 테마 )
 
-## 🚀 가이드 라인
+<p>
+  <img src="https://user-images.githubusercontent.com/63289318/155276767-c7a8ffa4-a030-423d-80fa-5129c58679f9.jpg" width="50%" align="left" />
+  <img src="https://user-images.githubusercontent.com/63289318/155278190-f599cdc7-911c-4c2a-9222-8919a295a4df.jpg" width="50%" align="right" />
+</p>
+
+## 🔎 가이드 라인 🔍
 ```bash
 cd blecoin
 
@@ -32,6 +34,6 @@ npm run deploy
 ## 🚀 배포
 백엔드 부분이 없고 간단한 프로젝트이기 때문에 `GitHub-Pages`를 이용해서 배포함
 
-[blecoin](https://1-blue.github.io/react-clone-project/)
+[blelist](https://1-blue.github.io/react-clone-project/)
 
 > 주의) 하나의 레포지토리에 모든 결과물을 올릴 예정이라 다른 사이트가 나올 수 있음
