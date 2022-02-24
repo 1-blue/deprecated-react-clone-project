@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	x="0px"
+	y="0px"
+	viewBox="0 0 40 40"
+	style="enable-background:new 0 0 40 40;"
+	xml:space="preserve"
+>
+	<style type="text/css">
+		.st0{fill:#040000;}
+		.st1{fill:#FFFFFF;}
+		.st2{font-family:'HeadlineR-HM';}
+		.st3{font-size:30px;}
+		.st4{fill:#2C89CA;}
+	</style>
+	<circle class="st0" cx="20" cy="20" r="20"/>
+	<text transform="matrix(1 0 0 1 9.6582 31.7109)" class="st1 st2 st3">B</text>
+	<path class="st4" d="M20,0v5c8.3,0,15,6.7,15,15h5C40,9,31,0,20,0z"/>
+</svg>
