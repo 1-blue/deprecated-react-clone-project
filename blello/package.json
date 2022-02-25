@@ -1,7 +1,7 @@
 {
   "name": "react-typescript",
   "version": "1.0.0",
-  "description": "React + Typescript 프로젝트 설명",
+  "description": "clone trello project by React.js",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --env development --open",

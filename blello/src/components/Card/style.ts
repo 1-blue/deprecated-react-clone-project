@@ -10,6 +10,10 @@ export const Wrapper = styled.li<{ isDragging: boolean }>`
   color: ${({ theme }) => theme.textColor};
   background-color: ${({ theme }) => theme.bgColor};
 
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+
   ${({ isDragging }) =>
     isDragging &&
     css`

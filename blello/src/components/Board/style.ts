@@ -8,6 +8,10 @@ export const Wrapper = styled.div<{ isDragging: boolean }>`
   border-radius: 0.4em;
   background-color: ${({ theme }) => theme.boardColor};
 
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+
   ${({ isDragging }) =>
     isDragging &&
     css`

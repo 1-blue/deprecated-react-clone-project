@@ -10,7 +10,7 @@ import NotFound from "@src/pages/NotFound";
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
