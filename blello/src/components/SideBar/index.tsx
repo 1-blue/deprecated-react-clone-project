@@ -27,7 +27,14 @@ const SideBar = () => {
   }, []);
 
   // 2022/02/24 - toggle theme - by 1-blue
-  const onClickTheme = useCallback(() => setTheme(prev => !prev), []);
+  const onClickTheme = useCallback(
+    () =>
+      setTheme(prev => {
+        localStorage.setItem("theme", JSON.stringify(!prev));
+        return !prev;
+      }),
+    [],
+  );
 
   return (
     <Wrapper>

@@ -1,7 +1,7 @@
 import React from "react";
 
 // assets
-import { Logo, Home, FillHome, Heart, FillHeart, Comment, FillComment, Avatar, Option, Search } from "@src/assets/icon";
+import { Logo, Option, Trash } from "@src/assets/icon";
 
 // styled-component
 import { Wrapper } from "./style";
@@ -24,65 +24,23 @@ const Icon = ({ shape, hoverFill, animation, ...props }: IIcon) => {
           <Logo {...props} />
         </Wrapper>
       );
-    case "home":
-      return (
-        <Wrapper hoverFill={hoverFill} animation={animation}>
-          <Home {...props} />
-        </Wrapper>
-      );
-    case "fillHome":
-      return (
-        <Wrapper hoverFill={hoverFill} animation={animation}>
-          <FillHome {...props} />
-        </Wrapper>
-      );
-    case "heart":
-      return (
-        <Wrapper hoverFill={hoverFill} animation={animation}>
-          <Heart {...props} />
-        </Wrapper>
-      );
-    case "fillHeart":
-      return (
-        <Wrapper hoverFill={hoverFill} animation={animation}>
-          <FillHeart {...props} />
-        </Wrapper>
-      );
-    case "comment":
-      return (
-        <Wrapper hoverFill={hoverFill} animation={animation}>
-          <Comment {...props} />
-        </Wrapper>
-      );
-    case "fillComment":
-      return (
-        <Wrapper hoverFill={hoverFill} animation={animation}>
-          <FillComment {...props} />
-        </Wrapper>
-      );
-    case "avatar":
-      return (
-        <Wrapper hoverFill={hoverFill} animation={animation}>
-          <Avatar {...props} />
-        </Wrapper>
-      );
     case "option":
       return (
         <Wrapper hoverFill={hoverFill} animation={animation}>
           <Option {...props} />
         </Wrapper>
       );
-    case "search":
+    case "trash":
       return (
         <Wrapper hoverFill={hoverFill} animation={animation}>
-          <Search {...props} />
+          <Trash {...props} />
         </Wrapper>
       );
 
     default:
       return (
         <Wrapper>
-          <Avatar />
+          <Logo />
         </Wrapper>
       );
   }

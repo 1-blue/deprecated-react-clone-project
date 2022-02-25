@@ -14,6 +14,9 @@ interface IAnimation {
 
 export const Wrapper = styled.i<IIconWrapper>`
   cursor: pointer;
+
+  fill: ${({ theme }) => theme.textColor};
+
   ${({ hoverFill }) =>
     hoverFill &&
     css<IHoverFill>`

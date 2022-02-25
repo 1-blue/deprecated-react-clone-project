@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { useRecoilState } from "recoil";
-import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import styled from "styled-components";
 
 // atom
-import { itemsState } from "@src/atoms";
+import { boardNamesAtom, boardsAtom } from "@src/atoms";
 
 // components
 import CreateBoardForm from "@src/components/CreateBoardForm";
@@ -15,7 +15,7 @@ const Wrapper = styled.section`
   justify-content: center;
   align-items: flex-start;
 
-  & > .board {
+  & .board {
     margin-right: 1em;
 
     &:last-child {
@@ -24,64 +24,96 @@ const Wrapper = styled.section`
   }
 `;
 
+const projectName = "#brello";
+
 const Home = () => {
-  const [items, setItems] = useRecoilState(itemsState);
+  const [boards, setBoards] = useRecoilState(boardsAtom);
+  const [boardNames, setBoardNames] = useRecoilState(boardNamesAtom);
 
   // 2022/02/24 - 드래그&드랍 이후 실행할 이벤트 - by 1-blue
-  const onDragEnd = useCallback(
-    ({ destination, source }: DropResult) => {
-      // 이동하지 않았다면 즉시 종료
-      if (!destination) return;
+  const onDragEnd = useCallback(({ destination, source }: DropResult) => {
+    // 이동하지 않았다면 즉시 종료
+    if (!destination) return;
 
-      // 출발/도착지 인덱스값 | 출발/도착지의 보드 식별값 ( 보드명 )
-      const sourcePoint = source?.index;
-      const destinationPoint = destination?.index;
-      const sourceTarget = source.droppableId;
-      const destinationTarget = destination.droppableId;
+    // 출발/도착 인덱스
+    const sourcePoint = source?.index;
+    const destinationPoint = destination?.index;
+    // 출발/도착 위치 ( doing, done, to do 같은 거 or #brello )
+    const sourceTarget = source.droppableId;
+    const destinationTarget = destination.droppableId;
 
-      // 출발보드와 도착보드가 같다면
+    // 보드 이동 시 실행
+    if (sourceTarget === projectName && destinationTarget === projectName) {
+      setBoardNames(prev => {
+        const boardNamesCopy = [...prev];
+
+        const tempBoardName = boardNamesCopy.splice(sourcePoint, 1);
+        boardNamesCopy.splice(destinationPoint, 0, ...tempBoardName);
+
+        localStorage.setItem("boardNames", JSON.stringify(boardNamesCopy));
+
+        return boardNamesCopy;
+      });
+    }
+    // 카드 이동 시 실행
+    else {
+      // 출발보드와 도착보드가 같으면 실행
       if (sourceTarget === destinationTarget) {
-        setItems(prev => {
+        setBoards(prev => {
           const sourceBoardCopy = [...prev[sourceTarget]];
 
           const tempBoard = sourceBoardCopy.splice(sourcePoint, 1);
           sourceBoardCopy.splice(destinationPoint, 0, ...tempBoard);
 
-          return {
+          const newBoards = {
             ...prev,
             [destinationTarget]: sourceBoardCopy,
           };
+
+          localStorage.setItem("boards", JSON.stringify(newBoards));
+
+          return newBoards;
         });
       }
       // 출발보드와 도착보드가 다르다면
       else {
-        setItems(prev => {
+        setBoards(prev => {
           const destinationBoardCopy = [...prev[destinationTarget]];
           const sourceBoardCopy = [...prev[sourceTarget]];
 
           const tempBoard = sourceBoardCopy.splice(sourcePoint, 1);
           destinationBoardCopy.splice(destinationPoint, 0, ...tempBoard);
 
-          return {
+          const newBoards = {
             ...prev,
             [sourceTarget]: sourceBoardCopy,
             [destinationTarget]: destinationBoardCopy,
           };
+
+          localStorage.setItem("boards", JSON.stringify(newBoards));
+
+          return newBoards;
         });
       }
-    },
-    [setItems],
-  );
+    }
+  }, []);
 
   return (
-    <Wrapper>
-      <DragDropContext onDragEnd={onDragEnd}>
-        {Object.keys(items).map(key => (
-          <Board key={key} itemId={key} items={items[key]} />
-        ))}
-      </DragDropContext>
-      <CreateBoardForm />
-    </Wrapper>
+    // 보드와 카드 드래그&드랍 같이 처리
+    <DragDropContext onDragEnd={onDragEnd}>
+      {/* 보드 드랍 영역 지정 */}
+      <Droppable type="board" direction="horizontal" droppableId={projectName}>
+        {boardProvided => (
+          <Wrapper ref={boardProvided.innerRef} {...boardProvided.droppableProps}>
+            {boardNames.map((key, index) => (
+              <Board key={key} boardId={key} board={boards[key]} index={index} />
+            ))}
+            {boardProvided.placeholder}
+            <CreateBoardForm />
+          </Wrapper>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 };
 

@@ -5,13 +5,14 @@ import { useSetRecoilState } from "recoil";
 import useInput from "@src/hooks/useInput";
 
 // atom
-import { itemsState } from "@src/atoms";
+import { boardNamesAtom, boardsAtom } from "@src/atoms";
 
 // styled-component
 import { Wrapper } from "./style";
 
 const CreateBoardForm = () => {
-  const setItems = useSetRecoilState(itemsState);
+  const setBoards = useSetRecoilState(boardsAtom);
+  const setBoardNames = useSetRecoilState(boardNamesAtom);
   const [name, onChangeName, setName] = useInput("");
 
   // 2022/02/24 - createing board - by 1-blue
@@ -19,10 +20,26 @@ const CreateBoardForm = () => {
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      setItems(prev => ({
-        ...prev,
-        [name]: [],
-      }));
+      // 보드 수정
+      setBoards(prev => {
+        const newBoards = {
+          ...prev,
+          [name]: [],
+        };
+
+        localStorage.setItem("boards", JSON.stringify(newBoards));
+
+        return newBoards;
+      });
+
+      // 보드 이름 수정
+      setBoardNames(prev => {
+        const newBoardNames = [...prev, name];
+
+        localStorage.setItem("boardNames", JSON.stringify(newBoardNames));
+
+        return newBoardNames;
+      });
 
       setName("");
     },

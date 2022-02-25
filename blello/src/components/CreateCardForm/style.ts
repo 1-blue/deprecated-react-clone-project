@@ -11,5 +11,14 @@ export const Wrapper = styled.form`
     border-radius: 0.2em;
     font-size: 0.8rem;
     font-weight: bold;
+
+    &:focus {
+      background-color: rgb(120, 120, 120);
+      transition: all 0.4s;
+      color: white;
+      &::placeholder {
+        color: white;
+      }
+    }
   }
 `;

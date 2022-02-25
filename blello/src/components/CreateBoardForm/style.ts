@@ -12,5 +12,14 @@ export const Wrapper = styled.form`
 
     font-size: 1rem;
     font-weight: bold;
+
+    &:focus {
+      background-color: rgb(120, 120, 120);
+      transition: all 0.4s;
+      color: white;
+      &::placeholder {
+        color: white;
+      }
+    }
   }
 `;

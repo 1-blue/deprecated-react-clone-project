@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
 
 // atom
-import { itemsState } from "@src/atoms";
+import { boardsAtom } from "@src/atoms";
 
 // styled-component
 import { Wrapper } from "./style";
@@ -10,28 +10,32 @@ import { Wrapper } from "./style";
 // hook
 import useInput from "@src/hooks/useInput";
 
-const CreateCardForm = ({ itemId }: { itemId: string }) => {
-  const setItems = useSetRecoilState(itemsState);
+const CreateCardForm = ({ boardId }: { boardId: string }) => {
+  const setBoards = useSetRecoilState(boardsAtom);
   const [name, onChangeName, setName] = useInput("");
 
   const CreateCard = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      setItems(prev => {
-        const sourceBoardCopy = [...prev[itemId]];
+      setBoards(prev => {
+        const sourceBoardCopy = [...prev[boardId]];
 
         sourceBoardCopy.push({ _id: Date.now(), text: name });
 
-        return {
+        const newBoards = {
           ...prev,
-          [itemId]: sourceBoardCopy,
+          [boardId]: sourceBoardCopy,
         };
+
+        localStorage.setItem("boards", JSON.stringify(newBoards));
+
+        return newBoards;
       });
 
       setName("");
     },
-    [itemId, name],
+    [boardId, name],
   );
 
   return (
