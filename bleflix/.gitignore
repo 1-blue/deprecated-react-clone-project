@@ -11,6 +11,3 @@ node_modules
 
 # aws-pem
 *.pem
-
-# 테스트
-bletest/*
