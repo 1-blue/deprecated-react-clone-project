@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const Wrapper = styled(motion.nav)`
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: 1;

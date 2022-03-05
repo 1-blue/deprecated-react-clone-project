@@ -1,5 +1,6 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 // components
 import AppRoutes from "@src/routes/AppRoutes";
@@ -17,12 +18,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const client = new QueryClient();
+
 const App = () => {
   return (
-    <CustomThemeProvider>
-      <GlobalStyle />
-      <AppRoutes />
-    </CustomThemeProvider>
+    <QueryClientProvider client={client}>
+      <CustomThemeProvider>
+        <GlobalStyle />
+        <AppRoutes />
+      </CustomThemeProvider>
+    </QueryClientProvider>
   );
 };
 
