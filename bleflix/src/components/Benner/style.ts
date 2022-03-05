@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.section<{ movieImage: string }>`
+export const Wrapper = styled.section<{ image: string }>`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -10,7 +10,7 @@ export const Wrapper = styled.section<{ movieImage: string }>`
 
   padding: 2em;
 
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${({ movieImage }) => movieImage});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${({ image }) => image});
   background-size: cover;
 `;
 

@@ -5,9 +5,7 @@ import styled from "styled-components";
 import NavBar from "@src/components/NavBar";
 import SideBar from "@src/components/SideBar";
 
-const Wrapper = styled.main`
-  height: 200vh;
-`;
+const Wrapper = styled.main``;
 
 type LayoutProps = {
   children: React.ReactNode;

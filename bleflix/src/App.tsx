@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.bgColor};
     color: ${({ theme }) => theme.textColor};
+    overflow-x: hidden;
   }
   a {
     color: ${({ theme }) => theme.textColor};
