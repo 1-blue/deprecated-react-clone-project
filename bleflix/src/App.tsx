@@ -12,7 +12,12 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.bgColor};
     color: ${({ theme }) => theme.textColor};
-    overflow-x: hidden;
+    
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   a {
     color: ${({ theme }) => theme.textColor};

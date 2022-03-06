@@ -1,17 +1,17 @@
 import React from "react";
 
 // type
-import { movie } from "@src/types";
+import { IItem } from "@src/types";
 
 // movie helper function
-import { movieFormat } from "@src/utils";
+import { itemFormat } from "@src/utils";
 
 // styled-components
 import { Wrapper, Title, Overview } from "./style";
 
-const Benner = ({ movie }: { movie: movie }) => {
+const Benner = ({ movie }: { movie: IItem }) => {
   return (
-    <Wrapper image={movieFormat({ path: movie.backdrop_path })}>
+    <Wrapper image={itemFormat({ path: movie.backdrop_path })}>
       <Title>{movie.title}</Title>
       <Overview>{movie.overview}</Overview>
     </Wrapper>

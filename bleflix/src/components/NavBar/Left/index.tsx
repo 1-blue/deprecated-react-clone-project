@@ -25,7 +25,7 @@ const Left = () => {
         <Link to="/series">시리즈 {pathname === "/series" && <Circle layoutId="circle" />}</Link>
       </li>
       <li>
-        <Link to="/movie">영화 {pathname === "/movie" && <Circle layoutId="circle" />}</Link>
+        <Link to="/movies">영화 {pathname === "/movies" && <Circle layoutId="circle" />}</Link>
       </li>
     </Wrapper>
   );

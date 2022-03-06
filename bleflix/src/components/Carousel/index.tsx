@@ -1,14 +1,15 @@
 import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 // types
-import { movie } from "@src/types";
+import { IItem, ITEM_KINDS } from "@src/types";
 
 // styled-component
-import { Wrapper, Row, Box, NextButton, PrevButton } from "./style";
+import { Wrapper, Row, Box, Image, Info, NextButton, PrevButton, CarouselTitle } from "./style";
 
 // util
-import { movieFormat } from "@src/utils";
+import { itemFormat } from "@src/utils";
 
 const carouselVariants = {
   initial: (isRight: boolean) => ({
@@ -21,10 +22,33 @@ const carouselVariants = {
     x: isRight ? -window.innerWidth : window.innerWidth,
   }),
 };
+const boxVariants = {
+  hover: {
+    scale: 1.4,
+    y: -100,
+    boxShadow: "0 0 10px black",
+    transition: {
+      type: "tween",
+      delay: 0.4,
+      duration: 0.4,
+    },
+  },
+};
+const infoVariants = {
+  hover: {
+    opacity: 1,
+    transition: {
+      type: "tween",
+      delay: 0.4,
+      duration: 0.4,
+    },
+  },
+};
 
 const offset = 6;
 
-const Carousel = ({ movies }: { movies: movie[] }) => {
+const Carousel = ({ kinds, title, items }: { kinds: ITEM_KINDS; title: string; items: IItem[] }) => {
+  const navigate = useNavigate();
   const [index, setIndex] = useState<number>(0);
   const [doing, setDoing] = useState<boolean>(false);
   const [isRight, setIsRight] = useState<boolean>(false);
@@ -35,7 +59,7 @@ const Carousel = ({ movies }: { movies: movie[] }) => {
     setDoing(true);
     setIsRight(true);
 
-    const point = Math.ceil(movies.length / offset);
+    const point = Math.ceil(items.length / offset);
 
     setIndex(prev => (point <= prev + 1 ? 0 : prev + 1));
   }, [doing]);
@@ -44,13 +68,21 @@ const Carousel = ({ movies }: { movies: movie[] }) => {
     setDoing(true);
     setIsRight(false);
 
-    const point = Math.ceil(movies.length / offset);
+    const point = Math.ceil(items.length / offset);
 
     setIndex(prev => (-1 >= prev - 1 ? point - 1 : prev - 1));
-  }, [movies, doing]);
+  }, [items, doing]);
+
+  // 2022/03/06 - show movie model - by 1-blue
+  const showModel = useCallback(
+    (movieId: number, backdrop_path: string, title: string, identifier: string) => () =>
+      navigate(`/${kinds}/${movieId}`, { state: { backdrop_path, title, identifier } }),
+    [],
+  );
 
   return (
     <Wrapper>
+      <CarouselTitle>{title}</CarouselTitle>
       <AnimatePresence initial={false} onExitComplete={() => setDoing(false)} custom={isRight}>
         <Row
           custom={isRight}
@@ -61,8 +93,21 @@ const Carousel = ({ movies }: { movies: movie[] }) => {
           transition={{ type: "tween", duration: 1 }}
           key={index}
         >
-          {movies.slice(offset * index, offset * index + offset).map(movie => (
-            <Box key={movie.id} image={movieFormat({ path: movie.backdrop_path, format: "w500" })} />
+          {items.slice(offset * index, offset * index + offset).map(item => (
+            <Box
+              key={item.id}
+              variants={boxVariants}
+              whileHover="hover"
+              transition={{ type: "tween" }}
+              onClick={showModel(item.id, item.backdrop_path, item.title || item.name, title)}
+              layoutId={item.id + title}
+            >
+              <Image image={itemFormat({ path: item.backdrop_path, format: "w500" })} />
+              <Info variants={infoVariants}>
+                <h4 className="title">{item.title || item.name}</h4>
+                <span className="release-date">{item.release_date || item.first_air_date}</span>
+              </Info>
+            </Box>
           ))}
         </Row>
       </AnimatePresence>
@@ -70,7 +115,7 @@ const Carousel = ({ movies }: { movies: movie[] }) => {
       <NextButton
         type="button"
         onClick={increaseIndex}
-        whileHover={{ fontSize: "50px" }}
+        whileHover={{ fontSize: "50px", opacity: 1 }}
         transition={{ duration: 0.2 }}
       >
         👉
@@ -78,7 +123,7 @@ const Carousel = ({ movies }: { movies: movie[] }) => {
       <PrevButton
         type="button"
         onClick={decreaseIndex}
-        whileHover={{ fontSize: "50px" }}
+        whileHover={{ fontSize: "50px", opacity: 1 }}
         transition={{ duration: 0.2 }}
       >
         👈

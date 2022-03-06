@@ -4,6 +4,7 @@ import webpack, { Configuration as WebpackConfiguration } from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import dotenv from "dotenv";
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
@@ -17,6 +18,8 @@ interface WebpackConfigParameters {
 const webpackConfig = (env: WebpackConfigParameters) => {
   // 개발용인지 배포용인지 판단
   const isDevelopment = !!env.development;
+
+  dotenv.config({ path: isDevelopment ? "./.env.development" : "./.env.production" });
 
   const config: Configuration = {
     name: "react-typescript-site",
@@ -80,6 +83,7 @@ const webpackConfig = (env: WebpackConfigParameters) => {
       new webpack.EnvironmentPlugin({
         NODE_ENV: isDevelopment ? "development" : "production",
         PUBLIC_URL: isDevelopment ? "/" : "/react-clone-project",
+        API_KEY: process.env.API_KEY,
       }),
     ],
     output: {

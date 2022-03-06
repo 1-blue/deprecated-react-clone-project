@@ -10,8 +10,10 @@ export const Wrapper = styled.section<{ image: string }>`
 
   padding: 2em;
 
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(${({ image }) => image});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)),
+    linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url(${({ image }) => image});
   background-size: cover;
+  background-attachment: fixed;
 `;
 
 export const Title = styled.h1`

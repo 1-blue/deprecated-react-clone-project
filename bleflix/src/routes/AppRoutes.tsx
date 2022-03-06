@@ -7,7 +7,7 @@ import Layout from "@src/layouts/Layout";
 // page-components
 import Home from "@src/pages/Home";
 import Series from "@src/pages/Series";
-import Movie from "@src/pages/Movie";
+import Movies from "@src/pages/Movies";
 import Search from "@src/pages/Search";
 import NotFound from "@src/pages/NotFound";
 
@@ -16,9 +16,12 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />}>
+            <Route path="movie/:movieId" element={<Home />} />
+            <Route path="tv/:tvId" element={<Home />} />
+          </Route>
           <Route path="/series" element={<Series />} />
-          <Route path="/movie" element={<Movie />} />
+          <Route path="/movies" element={<Movies />} />
           <Route path="/search" element={<Search />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
