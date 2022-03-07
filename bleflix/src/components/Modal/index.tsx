@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 
@@ -13,6 +13,7 @@ import { Wrapper, Overlay, MovieImage, MovieTitle, MovieDescription, LayoutFlex,
 
 // type
 import { ITEM_KINDS, IDetailMovie, IDetailTv } from "@src/types";
+import { AnimatePresence } from "framer-motion";
 
 interface IModalProps {
   kinds: ITEM_KINDS;
@@ -26,6 +27,12 @@ interface ILocationProps {
 }
 
 const Modal = ({ kinds, itemId }: IModalProps) => {
+  // 2022/03/06 - 모달창 오픈 시 외부영역 스크롤 끄기 - by 1-blue
+  useEffect((): any => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "visible");
+  }, []);
+
   const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as ILocationProps;
@@ -65,8 +72,8 @@ const Modal = ({ kinds, itemId }: IModalProps) => {
               <span className="movie-sub-font-size">{movie?.release_date}</span>
             </li>
             <li>
-              <span className="movie-sub-title">추천수: </span>
-              <span className="movie-sub-font-size">{movie?.vote_count}</span>
+              <span className="movie-sub-title">평점: </span>
+              <span className="movie-sub-font-size">{movie?.vote_average}</span>
             </li>
           </>
         );
@@ -92,8 +99,8 @@ const Modal = ({ kinds, itemId }: IModalProps) => {
               {tv?.first_air_date}
             </li>
             <li>
-              <span className="movie-sub-title">추천수: </span>
-              {tv?.vote_count}
+              <span className="movie-sub-title">평점: </span>
+              {tv?.vote_average}
             </li>
           </>
         );
@@ -104,11 +111,12 @@ const Modal = ({ kinds, itemId }: IModalProps) => {
   }, [kinds, data]);
 
   // 2022/03/06 - back to the home - by 1-blue
-  const closeModal = useCallback(() => navigate("/"), []);
+  const closeModal = useCallback(() => navigate(-1), []);
 
   return (
     <>
-      <Overlay onClick={closeModal} />
+      <Overlay onClick={closeModal} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
+
       <Wrapper layoutId={itemId + state.identifier}>
         <MovieImage image={itemFormat({ path: data?.poster_path || state.backdrop_path })} />
         <MovieTitle>{state.title}</MovieTitle>

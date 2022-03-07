@@ -19,13 +19,16 @@ const Left = () => {
         </Link>
       </li>
       <li>
-        <Link to="/">홈 {pathname === "/" && <Circle layoutId="circle" />}</Link>
+        <Link to="/">홈{pathname === "/" && <Circle layoutId="circle" />}</Link>
       </li>
       <li>
-        <Link to="/series">시리즈 {pathname === "/series" && <Circle layoutId="circle" />}</Link>
+        <Link to="/tvs">TV {pathname.includes("/tvs") && <Circle layoutId="circle" />}</Link>
       </li>
       <li>
-        <Link to="/movies">영화 {pathname === "/movies" && <Circle layoutId="circle" />}</Link>
+        <Link to="/movies">영화 {pathname.includes("/movies") && <Circle layoutId="circle" />}</Link>
+      </li>
+      <li>
+        <Link to="/search">검색 {pathname.includes("/search") && <Circle layoutId="circle" />}</Link>
       </li>
     </Wrapper>
   );

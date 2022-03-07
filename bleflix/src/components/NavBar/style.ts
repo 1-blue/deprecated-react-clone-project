@@ -9,7 +9,6 @@ export const Wrapper = styled(motion.nav)`
   z-index: 1;
   padding: 1em;
   margin-bottom: 2em;
-  background-color: ${({ theme }) => theme.navColor};
 
   display: flex;
   justify-content: space-between;

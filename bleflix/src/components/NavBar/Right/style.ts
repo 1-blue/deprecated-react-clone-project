@@ -6,7 +6,8 @@ export const Wrapper = styled.ul`
   justify-content: center;
   align-items: center;
 
-  & li {
+  & li,
+  form {
     margin-right: 1em;
 
     &:first-child {

@@ -6,10 +6,11 @@ import Layout from "@src/layouts/Layout";
 
 // page-components
 import Home from "@src/pages/Home";
-import Series from "@src/pages/Series";
+import Tvs from "@src/pages/Tvs";
 import Movies from "@src/pages/Movies";
 import Search from "@src/pages/Search";
 import NotFound from "@src/pages/NotFound";
+import NotSearch from "@src/pages/NotSearch";
 
 const AppRoutes = () => {
   return (
@@ -17,12 +18,20 @@ const AppRoutes = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />}>
-            <Route path="movie/:movieId" element={<Home />} />
-            <Route path="tv/:tvId" element={<Home />} />
+            <Route path="movie/:movieId" />
+            <Route path="tv/:tvId" />
           </Route>
-          <Route path="/series" element={<Series />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/tvs" element={<Tvs />}>
+            <Route path=":tvId" />
+          </Route>
+          <Route path="/movies" element={<Movies />}>
+            <Route path=":movieId" />
+          </Route>
+          <Route path="/search" element={<NotSearch />}>
+            <Route path=":query" element={<Search />}>
+              <Route path=":itemId" />
+            </Route>
+          </Route>
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Layout>

@@ -6,6 +6,7 @@ export enum MOVIE_KINDS {
   POPULAR = "popular",
   NOW_PLAYING = "now_playing",
   UPCOMING = "upcoming",
+  TOP_RATED = "top_rated",
 }
 
 export enum TV_KIND {
@@ -21,7 +22,7 @@ export interface IItem {
   original_title: string;
   overview: string;
   poster_path: string;
-  vote_count: number;
+  vote_average: number;
 
   // 영화 변수
   title: string;
@@ -30,6 +31,9 @@ export interface IItem {
   // TV 프로그램 변수
   name: string;
   first_air_date: string;
+
+  // 검색관련 변수
+  media_type: ITEM_KINDS;
 }
 export interface IItemsResult {
   dates: {
@@ -49,7 +53,7 @@ export interface IDetailMovie {
   backdrop_path: string;
   poster_path: string;
   release_date: string;
-  vote_count: number;
+  vote_average: number;
   genres: { id: number; name: string }[];
   runtime: number;
   tagline: string;
@@ -63,8 +67,15 @@ export interface IDetailTv {
   poster_path: string;
   first_air_date: string;
   last_air_date: string;
-  vote_count: number;
+  vote_average: number;
   genres: { id: number; name: string }[];
   episode_run_time: number[];
   tagline: string;
+}
+
+export interface ISearchItems {
+  page: number;
+  results: IItem[];
+  total_pages: number;
+  total_results: number;
 }

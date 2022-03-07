@@ -19,7 +19,7 @@ export const Wrapper = styled(motion.section)`
   }
 `;
 
-export const Overlay = styled.div`
+export const Overlay = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
@@ -38,7 +38,6 @@ export const MovieImage = styled(motion.figure)<{ image: string }>`
 `;
 
 export const MovieTitle = styled.h2`
-  color: white;
   padding: 0.6em 1em 0;
 `;
 

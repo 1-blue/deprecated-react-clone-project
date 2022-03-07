@@ -1,9 +1,13 @@
-import { useViewportScroll } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import { useViewportScroll } from "framer-motion";
+import { useRecoilValue } from "recoil";
 
 // components
 import Left from "./Left";
 import Right from "./Right";
+
+// atom
+import { themeState } from "@src/atoms";
 
 // styled-components
 import { Wrapper } from "./style";
@@ -12,14 +16,21 @@ const navVariants = {
   initial: {
     backgroundColor: "transparent",
   },
-  animate: (scrollY: number) => ({
-    backgroundColor: scrollY > 40 ? "rgba(36, 37, 38, 1)" : "rgba(36, 37, 38, 0)",
+  animate: ({ y: scrollY, isDark }: { y: number; isDark: boolean }) => ({
+    backgroundColor: isDark
+      ? scrollY > 40
+        ? "rgba(36, 37, 38, 1)"
+        : "rgba(36, 37, 38, 0)"
+      : scrollY > 40
+      ? "rgba(245, 246, 250, 1)"
+      : "rgba(245, 246, 250, 0)",
     boxShadow: scrollY > 40 ? "0 0 16px black" : "0 0 0px black",
     transition: { duration: 0.6 },
   }),
 };
 
 const NavBar = () => {
+  const isDark = useRecoilValue(themeState);
   const { scrollY } = useViewportScroll();
   const [y, setY] = useState<number>(0);
 
@@ -30,7 +41,7 @@ const NavBar = () => {
   useEffect(() => scrollY.onChange(v => setY(v)), [scrollY]);
 
   return (
-    <Wrapper custom={y} variants={navVariants} initial="initial" animate="animate">
+    <Wrapper custom={{ y, isDark }} variants={navVariants} initial="initial" animate="animate">
       <Left />
       <Right />
     </Wrapper>

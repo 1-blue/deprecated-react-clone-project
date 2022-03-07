@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 // types
@@ -25,8 +25,10 @@ const carouselVariants = {
 const boxVariants = {
   hover: {
     scale: 1.4,
-    y: -100,
+    y: -40,
     boxShadow: "0 0 10px black",
+    zIndex: 1,
+    borderRadius: "4px",
     transition: {
       type: "tween",
       delay: 0.4,
@@ -48,10 +50,12 @@ const infoVariants = {
 const offset = 6;
 
 const Carousel = ({ kinds, title, items }: { kinds: ITEM_KINDS; title: string; items: IItem[] }) => {
+  const { pathname } = useLocation(); // path를 기준으로 모달창을 보여주기 때문에 현재 위치가 home인지 다른 디테일 페이지인지 판단하기 위해 사용하는 변수
   const navigate = useNavigate();
   const [index, setIndex] = useState<number>(0);
   const [doing, setDoing] = useState<boolean>(false);
   const [isRight, setIsRight] = useState<boolean>(false);
+  const identifier = title + pathname;
 
   // 2022/03/05 - 인덱스 증가/감소 - by 1-blue
   const increaseIndex = useCallback(() => {
@@ -75,9 +79,13 @@ const Carousel = ({ kinds, title, items }: { kinds: ITEM_KINDS; title: string; i
 
   // 2022/03/06 - show movie model - by 1-blue
   const showModel = useCallback(
-    (movieId: number, backdrop_path: string, title: string, identifier: string) => () =>
-      navigate(`/${kinds}/${movieId}`, { state: { backdrop_path, title, identifier } }),
-    [],
+    (itemId: number, backdrop_path: string, title: string, media_type: string) => () => {
+      if (pathname.includes("/search"))
+        navigate(`${pathname}/${itemId}`, { state: { backdrop_path, title, identifier, media_type } });
+      else
+        navigate(`/${kinds}${pathname === "/" ? "" : "s"}/${itemId}`, { state: { backdrop_path, title, identifier } });
+    },
+    [pathname, identifier],
   );
 
   return (
@@ -99,13 +107,14 @@ const Carousel = ({ kinds, title, items }: { kinds: ITEM_KINDS; title: string; i
               variants={boxVariants}
               whileHover="hover"
               transition={{ type: "tween" }}
-              onClick={showModel(item.id, item.backdrop_path, item.title || item.name, title)}
-              layoutId={item.id + title}
+              onClick={showModel(item.id, item.backdrop_path, item.title || item.name, item.media_type)}
+              layoutId={item.id + identifier}
             >
               <Image image={itemFormat({ path: item.backdrop_path, format: "w500" })} />
               <Info variants={infoVariants}>
                 <h4 className="title">{item.title || item.name}</h4>
-                <span className="release-date">{item.release_date || item.first_air_date}</span>
+                <span className="release-date">🚀개봉일: {item.release_date || item.first_air_date}</span>
+                <span className="vote-average">👍평점: {item.vote_average}</span>
               </Info>
             </Box>
           ))}

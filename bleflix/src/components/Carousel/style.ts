@@ -20,6 +20,7 @@ export const Row = styled(motion.div)`
 `;
 
 export const Box = styled(motion.div)`
+  position: relative;
   overflow: hidden;
   cursor: pointer;
 
@@ -40,10 +41,11 @@ export const Image = styled(motion.figure)<{ image: string }>`
   background-image: url(${({ image }) => image});
   background-size: cover;
   background-position: center center;
-  border-radius: 4px 4px 0 0;
 `;
 
 export const Info = styled(motion.div)`
+  position: absolute;
+  bottom: 0;
   width: 100%;
   text-align: center;
   background-color: ${({ theme }) => theme.bgColor};
@@ -62,10 +64,13 @@ export const Info = styled(motion.div)`
 
   & .title {
     font-weight: bold;
+    margin-bottom: 0.4em;
   }
 
-  & .release-date {
+  & .release-date,
+  .vote-average {
     font-size: 0.7rem;
+    text-align: start;
   }
 `;
 

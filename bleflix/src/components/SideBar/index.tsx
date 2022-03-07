@@ -1,9 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+
+// atom
+import { themeState } from "@src/atoms";
 
 // styled-components
 import { Wrapper } from "./style";
 
 const SideBar = () => {
+  const [isDark, setTheme] = useRecoilState(themeState);
   const [isTop, setIsTop] = useState<boolean>(true);
 
   // 스크롤 맨위로 이동
@@ -19,6 +24,14 @@ const SideBar = () => {
     return () => window.removeEventListener("scroll", isSrcollTop);
   }, []);
 
+  // 2022/03/07 - theme 변경 - by 1-blue
+  const toggleTheme = useCallback(() => {
+    setTheme(prev => {
+      localStorage.setItem("theme", JSON.stringify(!prev));
+      return !prev;
+    });
+  }, []);
+
   return (
     <Wrapper>
       {isTop || (
@@ -26,8 +39,8 @@ const SideBar = () => {
           👆
         </button>
       )}
-      <button type="button" className="side-button">
-        {true ? "☀️" : "🌙"}
+      <button type="button" className="side-button" onClick={toggleTheme}>
+        {isDark ? "☀️" : "🌙"}
       </button>
     </Wrapper>
   );

@@ -30,6 +30,11 @@ interface ITvFetcherProps {
   tvId: string;
   language?: string;
 }
+interface ISearchFetcherProps {
+  query: string;
+  page?: number;
+  language?: string;
+}
 
 // tv프로그램 정보 가져오기
 export const tvsFetcher = ({ kinds, page = 1, language = "ko-KR" }: ITvsFetcherProps): Promise<any> =>
@@ -38,3 +43,9 @@ export const tvsFetcher = ({ kinds, page = 1, language = "ko-KR" }: ITvsFetcherP
 // 특정 tv프로그램 정보 가져오기
 export const tvFetcher = ({ tvId, language = "ko-KR" }: ITvFetcherProps): Promise<any> =>
   fetch(`${BASE_URL}/tv/${tvId}?api_key=${API_KEY}&language=${language}`).then(res => res.json());
+
+// 검색
+export const searchFetcher = ({ query, page = 1, language = "ko-KR" }: ISearchFetcherProps): Promise<any> =>
+  fetch(
+    `${BASE_URL}/search/multi?api_key=${API_KEY}&query=${query}&language=${language}&page=${page}&include_adult=true`,
+  ).then(res => res.json());
