@@ -32,7 +32,7 @@ const App = () => {
   return (
     <RecoilRoot>
       <QueryClientProvider client={client}>
-        <ReactQueryDevtools />
+        {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
         <CustomThemeProvider>
           <GlobalStyle />
           <AppRoutes />

@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import Benner from "@src/components/Benner";
 import MovieCarousels from "@src/components/MovieCarousels";
 import Modal from "@src/components/Modal";
+import HeadInfo from "@src/components/common/HeadInfo";
 
 // atom
 import { mainMovieState } from "@src/atoms";
@@ -19,6 +20,8 @@ const Movies = () => {
 
   return (
     <>
+      <HeadInfo title="bleflix - movies" image={mainMovie?.backdrop_path || mainMovie?.poster_path} />
+
       <Benner item={mainMovie} />
       <MovieCarousels />
 

@@ -7,6 +7,7 @@ import { searchFetcher } from "@src/api";
 
 // common-component
 import Loader from "@src/components/common/Loader";
+import HeadInfo from "@src/components/common/HeadInfo";
 
 // component
 import Benner from "@src/components/Benner";
@@ -33,6 +34,8 @@ const Search = () => {
 
   return (
     <>
+      <HeadInfo title="bleflix - search" image={filteredItems[0].backdrop_path} />
+
       <Benner item={filteredItems[0]} />
 
       {filteredMovies.length >= 1 && (

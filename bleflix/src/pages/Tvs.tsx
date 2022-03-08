@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 // components
 import Benner from "@src/components/Benner";
 import TvCarousels from "@src/components/TvCarousels";
+import HeadInfo from "@src/components/common/HeadInfo";
 
 // atom
 import { mainTvState } from "@src/atoms";
@@ -17,6 +18,8 @@ const Tvs = () => {
 
   return (
     <>
+      <HeadInfo title="bleflix - tvs" image={mainTv?.backdrop_path || mainTv?.poster_path} />
+
       <Benner item={mainTv} />
       <TvCarousels />
 

@@ -14,12 +14,16 @@ import Modal from "@src/components/Modal";
 import TvCarousels from "@src/components/TvCarousels";
 import MovieCarousels from "@src/components/MovieCarousels";
 
+import HeadInfo from "@src/components/common/HeadInfo";
+
 const Home = () => {
   const { movieId, tvId } = useParams<{ movieId: string; tvId: string }>();
   const mainMovie = useRecoilValue(mainMovieState);
 
   return (
     <>
+      <HeadInfo title="bleflix - home" image={mainMovie?.backdrop_path || mainMovie?.poster_path} />
+
       {/* 1위 ~ 20위의 인기영화중 랜덤으로 메인화면으로 보여줌 */}
       <Benner item={mainMovie} />
 

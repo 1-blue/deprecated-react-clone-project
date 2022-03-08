@@ -5,6 +5,8 @@ import styled from "styled-components";
 // hook
 import useInput from "@src/hooks/useInput";
 
+import HeadInfo from "@src/components/common/HeadInfo";
+
 const Wrapper = styled.form`
   position: fixed;
   top: 0;
@@ -53,6 +55,8 @@ const NotSearch = () => {
 
   return (
     <>
+      <HeadInfo title="bleflix - search" />
+
       {query ? (
         <Outlet />
       ) : (

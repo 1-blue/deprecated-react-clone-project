@@ -13,14 +13,6 @@ interface IMovieFetcherProps {
   language?: string;
 }
 
-// 영화들 정보 가져오기
-export const moviesFetcher = ({ kinds, page = 1, language = "ko-KR" }: IMoviesFetcherProps): Promise<any> =>
-  fetch(`${BASE_URL}/movie/${kinds}?api_key=${API_KEY}&language=${language}&page=${page}`).then(res => res.json());
-
-// 특정 영화 정보 가져오기
-export const movieFetcher = ({ movieId, language = "ko-KR" }: IMovieFetcherProps): Promise<any> =>
-  fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=${language}`).then(res => res.json());
-
 interface ITvsFetcherProps {
   kinds: TV_KIND;
   page?: number;
@@ -35,6 +27,14 @@ interface ISearchFetcherProps {
   page?: number;
   language?: string;
 }
+
+// 영화들 정보 가져오기
+export const moviesFetcher = ({ kinds, page = 1, language = "ko-KR" }: IMoviesFetcherProps): Promise<any> =>
+  fetch(`${BASE_URL}/movie/${kinds}?api_key=${API_KEY}&language=${language}&page=${page}`).then(res => res.json());
+
+// 특정 영화 정보 가져오기
+export const movieFetcher = ({ movieId, language = "ko-KR" }: IMovieFetcherProps): Promise<any> =>
+  fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=${language}`).then(res => res.json());
 
 // tv프로그램 정보 가져오기
 export const tvsFetcher = ({ kinds, page = 1, language = "ko-KR" }: ITvsFetcherProps): Promise<any> =>
