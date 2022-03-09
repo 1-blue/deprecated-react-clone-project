@@ -21,6 +21,8 @@ export const Wrapper = styled.section<{ image: string; isDark: boolean }>`
         `}
   background-size: cover;
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
 `;
 
 export const Title = styled.h1`

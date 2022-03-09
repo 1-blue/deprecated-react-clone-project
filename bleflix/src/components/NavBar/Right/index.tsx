@@ -57,8 +57,6 @@ const Right = () => {
           />
         </form>
       </li>
-      <li>알림</li>
-      <li>내 정보</li>
       <li>
         <a href="https://github.com/1-blue" target="_blank">
           <b>GitHub</b>

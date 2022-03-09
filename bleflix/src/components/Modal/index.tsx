@@ -110,7 +110,7 @@ const Modal = ({ kinds, itemId }: IModalProps) => {
     }
   }, [kinds, data]);
 
-  // 2022/03/06 - back to the home - by 1-blue
+  // 2022/03/06 - back to the previous path - by 1-blue
   const closeModal = useCallback(() => navigate(-1), []);
 
   return (

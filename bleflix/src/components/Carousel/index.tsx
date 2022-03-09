@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -47,8 +47,6 @@ const infoVariants = {
   },
 };
 
-const offset = 6;
-
 const Carousel = ({ kinds, title, items }: { kinds: ITEM_KINDS; title: string; items: IItem[] }) => {
   const { pathname } = useLocation(); // path를 기준으로 모달창을 보여주기 때문에 현재 위치가 home인지 다른 디테일 페이지인지 판단하기 위해 사용하는 변수
   const navigate = useNavigate();
@@ -56,6 +54,23 @@ const Carousel = ({ kinds, title, items }: { kinds: ITEM_KINDS; title: string; i
   const [doing, setDoing] = useState<boolean>(false);
   const [isRight, setIsRight] = useState<boolean>(false);
   const identifier = title + pathname;
+  const [offset, setOffset] = useState<number>(6);
+
+  // 2022/03/08 - offset 지정 - by 1-blue
+  useEffect(() => {
+    const changeOffset = () => {
+      if (window.innerWidth <= 486) setOffset(1);
+      else if (window.innerWidth <= 768) setOffset(2);
+      else if (window.innerWidth <= 1024) setOffset(3);
+      else if (window.innerWidth <= 1400) setOffset(4);
+      else if (window.innerWidth <= 1800) setOffset(5);
+    };
+    changeOffset();
+
+    window.addEventListener("resize", changeOffset);
+
+    return () => window.removeEventListener("resize", changeOffset);
+  }, []);
 
   // 2022/03/05 - 인덱스 증가/감소 - by 1-blue
   const increaseIndex = useCallback(() => {

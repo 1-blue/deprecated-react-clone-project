@@ -14,7 +14,7 @@ import NotSearch from "@src/pages/NotSearch";
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />}>

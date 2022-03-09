@@ -17,6 +17,16 @@ export const Wrapper = styled(motion.section)`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 1024px) {
+    width: 80vw;
+  }
+  @media (min-width: 1024px) and (max-width: 1400px) {
+    width: 60vw;
+  }
+  @media (min-width: 1400px) and (max-width: 1800px) {
+    width: 50vw;
+  }
 `;
 
 export const Overlay = styled(motion.div)`
